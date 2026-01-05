@@ -1,0 +1,32 @@
+/* Make the site layout use flexbox */
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem; /* top padding to avoid fixed nav */
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Position navigation at top-right of the viewport */
+.navigation {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 1rem;
+  z-index: 1000;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: #fff8e7;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Adjust link hover */
+.navigation a:hover {
+  text-decoration: underline;
+}
