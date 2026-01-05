@@ -1,0 +1,153 @@
+/* Make the site layout use flexbox */
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem; /* top padding to avoid fixed nav */
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Position navigation at top-right of the viewport */
+.navigation {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 1rem;
+  z-index: 1000;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: #fff8e7;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Adjust link hover */
+.navigation a:hover {
+  text-decoration: underline;
+}
+
+.home-container {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+
+/* Grid styling: techno blue, thin lines */
+.grid-base polyline {
+  stroke: #0b3a66; /* dark blue */
+  stroke-width: 0.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.75;
+  transition: stroke-width 200ms linear, stroke-opacity 200ms linear;
+}
+
+.grid-overlay polyline {
+  stroke: #5ee7ff; /* bright cyan-blue */
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.95;
+  filter: drop-shadow(0 0 8px rgba(94,231,255,0.6));
+  transition: stroke-width 200ms linear, stroke-opacity 200ms linear, filter 200ms linear;
+}
+
+/* Prevent the overlay from capturing pointer events */
+.grid-overlay {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grid-base polyline,
+  .grid-overlay polyline {
+    transition: none !important;
+  }
+  .grid-overlay {
+    filter: none !important;
+  }
+}
+
+/* Hero card centered over the grid */
+.hero-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  max-width: 720px;
+  width: calc(100% - 4rem);
+  background: rgba(6, 10, 20, 0.55);
+  border: 1px solid rgba(94,231,255,0.14);
+  padding: 3rem 3.5rem;
+  border-radius: 12px;
+  color: #e6f7ff;
+  text-align: center;
+  box-shadow: 0 12px 48px rgba(2,10,30,0.65);
+  backdrop-filter: blur(8px) saturate(120%);
+}
+
+.hero-card h1 {
+  margin: 0 0 0.75rem 0;
+  font-size: 3rem;
+  letter-spacing: -0.5px;
+  color: #eaffff;
+  text-shadow: 0 4px 18px rgba(94,231,255,0.12);
+  font-weight: 400; /* unbold the name/text */
+}
+
+.hero-name {
+  color: #0b3a66; /* dark blue */
+  font-weight: 400; /* keep unbold */
+}
+
+.hero-card p {
+  margin: 0;
+  color: rgba(235,249,255,0.95);
+  font-size: 1.25rem;
+  line-height: 1.45;
+  opacity: 0.98;
+}
+
+@media (max-width: 640px) {
+  .hero-card { padding: 1.25rem; }
+  .hero-card h1 { font-size: 1.6rem; }
+}
+
+/* Learn more button */
+.learn-more {
+  display: inline-block;
+  margin-top: 1.25rem;
+  padding: 0.75rem 1.25rem;
+  background: #0b3a66; /* same dark blue as name */
+  color: #eaffff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(11,58,102,0.28);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+.learn-more:hover {
+  transform: translateY(-2px);
+}
+
+/* page fade-in */
+.home-container {
+  opacity: 0;
+  animation: fadeIn 580ms ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-container { animation: none; opacity: 1; }
+}
