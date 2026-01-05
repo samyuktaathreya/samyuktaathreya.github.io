@@ -14,22 +14,76 @@ function Contact() {
   return <h2>Contact Page</h2>;
 }
 
+const scrollToSection = (id) => {
+  if (typeof window === 'undefined') return;
+  const container = document.getElementById('sections');
+  const target = document.getElementById(id);
+  if (container && target) {
+    container.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
+  } else if (target) {
+    target.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 export default function App() {
   return (
     <BrowserRouter>
-      <nav className="navigation">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/projects">Projects</Link>
-          <Link to="/contact">Contact</Link>
-      </nav>
+      <div className="topbar">
+        <header className="site-identity" aria-label="Site identity">
+          <img className="avatar" src="/samyuktapic.jpeg" alt="Samyukta Athreya" 
+          href="#home"
+          
+          />
+          <span className="site-name"><span className="header-title">Samyukta Athreya</span></span>
+        </header>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+        <nav className="navigation">
+          <a href="#home"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('home');
+            }}
+          
+          >Home</a>
+          <a 
+            href="#about"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('about');
+            }}
+          >About</a>
+          <a href="#projects"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('projects');
+            }}
+          >Projects</a>
+          <a href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('contact');
+            }}
+          >Contact</a>
+        </nav>
+      </div>
+
+      <div className="sections" id="sections">
+        <section id="home" className="page-section">
+          <Home />
+        </section>
+
+        <section id="about" className="page-section">
+          <About />
+        </section>
+
+        <section id="projects" className="page-section">
+          <Projects />
+        </section>
+
+        <section id="contact" className="page-section">
+          <Contact />
+        </section>
+      </div>
     </BrowserRouter>
   );
 }

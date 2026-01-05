@@ -1,23 +1,91 @@
 /* Make the site layout use flexbox */
+/* Make the root fill the viewport so the sections container can be fixed */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+/* Keep content centered when sections aren't full-bleed, but allow full-bleed sections */
 #root {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 4rem 2rem 2rem; /* top padding to avoid fixed nav */
-  min-height: 100vh;
   box-sizing: border-box;
 }
 
 /* Position navigation at top-right of the viewport */
 .navigation {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
   display: flex;
   gap: 1rem;
   z-index: 1000;
+}
+
+/* top-left site identity (avatar + name) visible on all sections */
+.site-identity {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: auto;
+}
+.site-identity .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(2,10,30,0.5);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.site-identity .site-name {
+  font-size: 1rem;
+  margin-left: 0.25rem;
+}
+
+/* Topbar: full-width gray block holding identity + nav */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  background: #2f2f2f; /* plain gray block */
+  color: #0b2b3a;
+  z-index: 1002;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.topbar .navigation a {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+}
+
+.header-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.header-title span:hover {
+  color: #87dceb;
+}
+
+.topbar .navigation a:hover { color: #87dceb; }
+
+
+/* ensure the fixed sections container doesn't sit under the topbar */
+.sections {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
 .navigation a {
@@ -26,17 +94,30 @@
   padding: 0.25rem 0.5rem;
 }
 
-/* Adjust link hover */
-.navigation a:hover {
-  text-decoration: underline;
-}
-
 .home-container {
-  position: fixed;
-  inset: 0;
+  /* make home act as a regular section child so it scrolls away */
+  position: relative;
   width: 100%;
   height: 100vh;
   z-index: 0;
+}
+
+/* sections container uses its own scroll context and snaps each section to viewport */
+.sections {
+  position: fixed;
+  inset: 0;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.page-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Grid styling: techno blue, thin lines */
@@ -84,7 +165,6 @@
   max-width: 720px;
   width: calc(100% - 4rem);
   background: rgba(6, 10, 20, 0.55);
-  border: 1px solid rgba(94,231,255,0.14);
   padding: 3rem 3.5rem;
   border-radius: 12px;
   color: #e6f7ff;
@@ -99,11 +179,11 @@
   letter-spacing: -0.5px;
   color: #eaffff;
   text-shadow: 0 4px 18px rgba(94,231,255,0.12);
-  font-weight: 400; /* unbold the name/text */
+  font-weight: 400;
 }
 
 .hero-name {
-  color: #0b3a66; /* dark blue */
+  color: #386590; /* dark blue */
   font-weight: 400; /* keep unbold */
 }
 
@@ -150,4 +230,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .home-container { animation: none; opacity: 1; }
+}
+
+.gif {
+  mix-blend-mode: multiply;
 }
