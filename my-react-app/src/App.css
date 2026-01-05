@@ -30,3 +30,34 @@
 .navigation a:hover {
   text-decoration: underline;
 }
+
+.home-container {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+
+/* Grid styling: techno blue, thin lines */
+.grid-base polyline {
+  stroke: #0b3a66; /* dark blue */
+  stroke-width: 0.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.75;
+}
+
+.grid-overlay polyline {
+  stroke: #5ee7ff; /* bright cyan-blue */
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.95;
+  filter: drop-shadow(0 0 6px rgba(94,231,255,0.6));
+}
+
+/* Prevent the overlay from capturing pointer events */
+.grid-overlay {
+  pointer-events: none;
+}
