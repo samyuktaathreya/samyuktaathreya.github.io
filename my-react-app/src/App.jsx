@@ -1,18 +1,9 @@
 import './App.css'
 import Home from './Pages/Home';
+import About from './Pages/About';
+import Projects from './Pages/Projects';
+import Contact from './Pages/Contact';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-
-function About() {
-  return <h2>About Page</h2>;
-}
-
-function Projects() {
-  return <h2>Projects Page</h2>;
-}
-
-function Contact() {
-  return <h2>Contact Page</h2>;
-}
 
 const scrollToSection = (id) => {
   if (typeof window === 'undefined') return;
