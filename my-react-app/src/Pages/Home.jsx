@@ -311,6 +311,17 @@ export default function Home() {
     rafRef.current = requestAnimationFrame(tick);
   }
 
+  const scrollToSection = (id) => {
+    if (typeof window === 'undefined') return;
+    const container = document.getElementById('sections');
+    const target = document.getElementById(id);
+    if (container && target) {
+      container.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
+    } else if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="home-container">
       <svg
@@ -382,9 +393,22 @@ export default function Home() {
       </svg>
       {/* centered hero card */}
       <div className="hero-card" role="region" aria-label="intro">
-        <h1>Hey! I'm <span className="hero-name">Samyukta</span>.</h1>
-        <p>Undergraduate developer exploring fullstack and machine learning.</p>
-        <a className="learn-more" href="/about" aria-label="Learn more about Samyukta">Learn More</a>
+        <h1>
+          Hey! I'm <span className="hero-name">Samyukta</span>
+          <img src="/pixelkittyjump.gif" alt="Pixel kitty" />
+        </h1>
+        <p>Undergrad developer exploring fullstack and machine learning.</p>
+        <a
+          className="learn-more"
+          href="#about"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection('about');
+          }}
+          aria-label="Learn more about Samyukta"
+        >
+          Let's go!
+        </a>
       </div>
     </div>
   );
