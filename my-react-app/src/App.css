@@ -1,5 +1,6 @@
-/* Make the site layout use flexbox */
-/* Make the root fill the viewport so the sections container can be fixed */
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=JetBrains+Mono&display=swap');
+
 html, body, #root {
   height: 100%;
   margin: 0;
@@ -191,7 +192,7 @@ html, body, #root {
 
 .hero-card h1 {
   margin: 0 0 0.75rem 0;
-  font-size: 3rem;
+  font-size: 4rem;
   letter-spacing: -0.5px;
   color: #eaffff;
   text-shadow: 0 4px 18px rgba(94,231,255,0.12);
@@ -203,16 +204,16 @@ html, body, #root {
   font-weight: 400; /* keep unbold */
 }
 
-.hero-card p {
+.typing{
   margin: 0;
   color: rgba(235,249,255,0.95);
-  font-size: 1.25rem;
+  font-size: 3rem;
   line-height: 1.45;
   opacity: 0.98;
 }
 
 @media (max-width: 640px) {
-  .hero-card { padding: 1.25rem; }
+  .hero-card { padding: 0.5rem; }
   .hero-card h1 { font-size: 1.6rem; }
 }
 

@@ -1,5 +1,6 @@
 
 import {useRef, useEffect} from 'react';
+import Typed from 'typed.js';
 
 function findTarget(baseX, baseY, mouseX, mouseY, alpha) {
   // vector from base point to mouse
@@ -62,6 +63,22 @@ function buildPolylineStrings(smoothX, smoothY, cols, rows, horizontal, vertical
 
 
 export default function Home() {
+  const el = useRef(null);
+
+  useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: ['Full Stack Engineer', 'ECE @ CMU', 'Applied ML Developer'],
+      typeSpeed: 50,
+      backSpeed: 40,
+      loop: true,
+      smartBackspace: true,
+    });
+    return () => {
+      // Destroy Typed instance during cleanup to stop animation
+      typed.destroy();
+    };
+  }, []);
+
   const svgRef = useRef(null);
   // respect reduced-motion preference
   const prefersReduced = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -394,10 +411,10 @@ export default function Home() {
       {/* centered hero card */}
       <div className="hero-card" role="region" aria-label="intro">
         <h1>
-          Hey! I'm <span className="hero-name">Samyukta</span>
+          Hi! I'm <span className="hero-name">Samyukta</span>
           <img src="/pixelkittyjump.gif" alt="Pixel kitty" />
         </h1>
-        <p>Undergrad developer exploring fullstack and machine learning.</p>
+        <div className="typing"><span ref={el} /></div>
         <a
           className="learn-more"
           href="#about"
@@ -409,6 +426,7 @@ export default function Home() {
         >
           Let's go!
         </a>
+        
       </div>
     </div>
   );
