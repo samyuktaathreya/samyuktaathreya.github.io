@@ -106,6 +106,15 @@ html, body, #root {
   z-index: 0;
 }
 
+.home-container::before {
+  content:"";
+  position:absolute;
+  inset:0;
+
+  pointer-events:none;
+  z-index:1;
+}
+
 /* sections container uses its own scroll context and snaps each section to viewport */
 .sections {
   position: fixed;
@@ -261,6 +270,7 @@ html, body, #root {
   position: relative;
   width: 100%;
   min-height: 200px;
+  margin-top:0rem;
 }
 .about__slides .slide {
   position: absolute;
@@ -309,7 +319,7 @@ html, body, #root {
 .about__content-title {
   font-weight: 700;
   font-size: 2.8rem;
-  margin-bottom: 3rem; 
+  margin-bottom: 0rem; 
 }
   
 @media only screen and (max-width: 37.5em) {
@@ -323,12 +333,16 @@ html, body, #root {
   line-height: 1.7;
   margin-bottom: 1rem; 
 }
+.about__content-details-para strong {
+    font-weight: 700;
+    color: rgb(199, 199, 199);
+}
 .about__content-details-para--hl {
     font-weight: 700;
     margin: 0 3px; 
 }
 .about__content-details-para:last-child {
-    margin-bottom: 4rem; 
+    margin-bottom: 2rem; 
 }
 
 .skills {
@@ -336,8 +350,9 @@ html, body, #root {
   flex-wrap: wrap; 
 }
 .skills__skill {
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     margin-bottom: 1.5rem;
+    margin-top: 1rem;
     margin-right: 1.5rem;
     font-size: 1.6rem;
     background: rgba(153, 153, 153, 0.2);
@@ -355,6 +370,7 @@ html, body, #root {
   justify-content: center;
   font-weight: 700;
   border-radius: 5px;
+  margin-right:1rem;
   box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.15);
   transition: transform .3s; }
   .btn:hover {
@@ -378,7 +394,10 @@ html, body, #root {
 .main-container {
   max-width: 120rem;
   margin: auto;
-  width: 92%; }
+  width: 92%; 
+  height:100vh;
+  overflow-x:hidden;
+}
 
 .heading-primary {
   font-size: 6rem;
@@ -462,4 +481,14 @@ html, body, #root {
 #about,
 .page-section {
   scroll-margin-top: 84px; /* header (64px) + small gap */
+}
+
+.projects-img-container {
+  max-width: 50%;
+}
+
+.project-preview-img {
+  width: 50vw;
+  height: auto;
+  display: block; /* removes inline-img whitespace */
 }

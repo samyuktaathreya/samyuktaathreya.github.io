@@ -407,7 +407,7 @@ export default function Home() {
           }}
           aria-label="Learn more about Samyukta"
         >
-          Learn More
+          Let's go!
         </a>
       </div>
     </div>
