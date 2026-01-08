@@ -1,5 +1,16 @@
 import { useState } from "react";
 
+const scrollToSection = (id) => {
+  if (typeof window === 'undefined') return;
+  const container = document.getElementById('sections');
+  const target = document.getElementById(id);
+  if (container && target) {
+    container.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
+  } else if (target) {
+    target.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 export default function About() {
     const [slide, setSlide] = useState(0);
 
@@ -21,12 +32,18 @@ export default function About() {
                     You can check them out below.
                   </p>
                 </div>
-                <a href="./#projects" className="btn btn--med btn--theme dynamicBgClr">Projects</a>
+                <a href="./#projects" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection('projects');
+                  }}
+                className="btn btn--med btn--theme dynamicBgClr">Projects</a>
+                <a href="/resume.pdf" className="btn btn--med btn--theme dynamicBgClr">Resume</a>
               </div>
 
               <div className={`slide ${slide === 1 ? 'active' : ''}`}>
                 <p className="about__content-details-para">
-                  In my free time, I enjoy running and producing music. Check out my
+                  In my free time, I enjoy running, language learning, and producing music. Check out my
                   music here!
                 </p>
                 <iframe
@@ -63,6 +80,7 @@ export default function About() {
               <div className="skills__skill">Authentication (JWT)</div>
               <div className="skills__skill">Git</div>
               <div className="skills__skill">SQL/MongoDB</div>
+              <div className="skills__skill">AI/ML</div>
             </div>
           </div>
         </div>

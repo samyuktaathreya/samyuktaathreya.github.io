@@ -5,12 +5,13 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  z-index: 1;
 }
 
 a {
@@ -28,6 +29,44 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-image: url("/space.jpeg");
+  background-size: cover;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0; /*top:0; right:0; bottom:0; left:0;*/
+  background-image:
+    radial-gradient(white 1px, transparent 2px);
+  background-size: 200px 200px;
+  background-repeat:repeat;
+  animation: drift-down 120s linear infinite;
+  pointer-events:none;
+}
+
+body::after{
+  content:"";
+  animation:drift-up 60s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes drift-down {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 500px 1000px;
+  }
+}
+
+@keyframes drift-up {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -500px -1000px;
+  }
 }
 
 h1 {
