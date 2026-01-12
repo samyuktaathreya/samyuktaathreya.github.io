@@ -14,7 +14,7 @@ html, body {
   --topbar-height: 64px;
 }
 
-*, *::before, *::after {box-sizing:border-box};
+*, *::before, *::after { box-sizing: border-box; }
 
 /* Keep content centered when sections aren't full-bleed, but allow full-bleed sections */
 #root {
@@ -88,7 +88,7 @@ html, body {
 
 
 /* ensure the fixed sections container doesn't sit under the topbar */
-.sections {
+.sections{
   position: fixed;
   top: var(--topbar-height);
   left: 0;
@@ -96,18 +96,20 @@ html, body {
   bottom: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  scroll-snap-type: y mandatory;
   -webkit-overflow-scrolling: touch;
+  scroll-snap-type: y mandatory;
 }
 
-.sections::before {
-  content: "";
-  position:absolute;
+
+.sections::before{
+  position: absolute;
   inset: 0;
-  transform:scale(1.25);
-  transform-origin:center;
-  background: radial-gradient(circle at 60% 30%, rgba(100,108,255,0.08), transparent 50%);
-  pointer-events:none;
+  pointer-events: none;
+  z-index: 0;
+}
+.sections > *{
+  position: relative;
+  z-index: 1;
 }
 
 .navigation a {
@@ -130,19 +132,6 @@ html, body {
   inset:0;
   pointer-events:none;
   z-index:1;
-}
-
-/* sections container uses its own scroll context and snaps each section to viewport */
-.sections {
-  position: fixed;
-  top: 64px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow-y: auto;
-  overflow-x:hidden;
-  scroll-snap-type: y mandatory;
-  -webkit-overflow-scrolling: touch;
 }
 
 .page-section {
@@ -206,24 +195,6 @@ html, body {
   backdrop-filter: blur(8px) saturate(120%);
 }
 
-/* iPhone fixes */
-@media (max-width: 640px) {
-  .projects-grid { grid-template-columns: 1fr; gap: 24px; }
-
-  .skills-container { grid-template-columns: 1fr; gap: 1rem; }
-
-  .selection-bar-container button { padding: 10px 14px; }
-
-  /* iOS scroll container stability */
-  .sections { scroll-snap-type: none; overflow-x: hidden; }
-  .page-section { scroll-snap-align: none; }
-
-  .portfolio-container,
-  .portfolio-container.show { padding: 28px 16px; }
-
-  .portfolio-title { font-size: 2.2rem; }
-}
-
 
 .hero-card h1 {
   margin: 0 0 0.75rem 0;
@@ -247,10 +218,6 @@ html, body {
   opacity: 0.98;
 }
 
-@media (max-width: 640px) {
-  .hero-card { padding: 0.5rem; }
-  .hero-card h1 { font-size: 1.6rem; }
-}
 
 /* Learn more button */
 .learn-more {
@@ -274,7 +241,14 @@ html, body {
   opacity: 0;
   animation: fadeIn 580ms ease forwards;
   width:100%;
-  height:100%;
+}
+
+.home-container > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block; /* avoids inline svg baseline gaps */
 }
 
 @keyframes fadeIn {
@@ -533,17 +507,6 @@ html, body {
   margin-top:32px;
 }
 
-@media(max-width:640px) {
-  .projects-grid {
-    gap:24px;
-    grid-template-columns: 1fr;
-  }
-
-  .project-card-container {
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
 
 .project-card-container {
   max-width:none;
@@ -1081,16 +1044,7 @@ html, body {
   transform: translateY(-2px);
 }
 
-/* Mobile spacing */
-@media (max-width: 640px) {
-  .project-details-container {
-    padding: 32px 18px;
-  }
 
-  .project-details-container h1 {
-    font-size: 1.6rem;
-  }
-}
 
 .project-details-top {
   width: 100%;
@@ -1124,17 +1078,30 @@ html, body {
   font-size:1.1rem;
 }
 
-@media(max-width:640px) {
-  .portfolio-container,
-  .portfolio-container.show {
-    padding: 28px 16px;
-  }
 
-  .portfolio-title {
-    font-size: 2.2rem;
-  }
+/* --- iPhone hardening (put at very bottom) --- */
+*, *::before, *::after { box-sizing: border-box; }
 
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* disable iOS scroll-snap bugs inside fixed scroller */
+@media (max-width: 640px) {
+  .sections { scroll-snap-type: none !important; }
+  .page-section { scroll-snap-align: none !important; }
+
+  .projects-grid { grid-template-columns: 1fr !important; }
+  .skills-container { grid-template-columns: 1fr !important; }
+
+  .selection-bar-container {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
   .selection-bar-container button {
-    padding: 10px 18px;
+    flex: 1;
+    padding: 10px 12px !important;
   }
 }
