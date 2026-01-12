@@ -308,7 +308,24 @@ html, body, #root {
   z-index:-1;
 }
 
-.contact-container,
+.contact-container {
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  transition: opacity 600ms ease, transform 600ms ease;
+  max-width:600px;
+  margin: 0 auto;
+  padding: 64px 48px;
+
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.10);
+  border-radius:10px;
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
+  box-shadow:0 10px 30px rgba(0,0,0,0.35);
+}
+
 .about-container{
   opacity: 0;
   transform: translateY(20px) scale(0.98);
@@ -365,7 +382,27 @@ html, body, #root {
 
 }
 
-.contact-container.show,
+.contact-container.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 1000ms ease, transform 600ms ease;
+  max-width:600px;
+  margin: 0 auto;
+  padding: 64px 48px;
+
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.10);
+  border-radius:10px;
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
+  box-shadow:0 10px 30px rgba(0,0,0,0.35);
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+
 .about-container.show {
   opacity: 1;
   transform: translateY(0) scale(1);
@@ -728,4 +765,100 @@ html, body, #root {
   flex-direction:row;
   flex-wrap:wrap;
   justify-content:space-evenly;
+}
+
+.contact-card {
+  border-radius:4px;
+  width: auto;
+  height:30px;
+  display:flex;
+  flex-direction:row;
+
+  margin-bottom:10px;
+  margin-right:15px;
+  justify-content:center;
+  align-items:center;
+
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.10);
+  border-radius:10px;
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
+  box-shadow:0 5px 15px rgba(0,0,0,0.35);
+
+  margin-top:20px;
+  padding: 10px 10px;
+
+  flex-basis: 150px;
+}
+
+.contact-name {
+  font-size:1.2rem;
+}
+
+.contact-logo,
+.contact-logo-linkedin,
+.contact-logo-spotify,
+.contact-logo-mail
+{
+  margin-right:5px;
+}
+
+.lets-connect {
+  
+  color: white;
+  font-size:1.2rem;
+  margin-top:0px;
+  font-weight:400;
+  font-family:jetbrains mono, monospace;
+  align-self:center;
+}
+
+.contact-title {
+  color: #386590; /* dark blue */
+  font-size:5rem;
+  margin-top:0px;
+  margin-bottom:20px;
+  font-weight:400;
+  align-self:center;
+}
+
+.contact-img {
+  animation: grow 2s infinite
+}
+
+.contact-card:hover {
+  transform:translateY(-2px);
+}
+
+.contact-card:hover .contact-logo {
+  transform:rotate(45);
+}
+
+.contact-logo-mail {
+  color: #70bed7;
+}
+
+.contact-logo-linkedin {
+  color: #0A66c2;
+}
+
+.contact-logo-spotify {
+  color: #1DB954;
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(0.9) translateY(3px);
+  }
+
+  40% {
+    transform: scale(1) translateY(3px);
+  }
+
+  100% {
+    transform: scale(0.9) translateY(3px);
+  }
 }

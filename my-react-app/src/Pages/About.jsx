@@ -14,11 +14,12 @@ const scrollToSection = (id) => {
 };
 
 export default function About() {
-    const sectionRef = useRef(null);
     const [show,setShow] = useState(false);
+    const sectionRef = useRef(null);
     useEffect(() => {
-      const el = sectionRef.current;
-      if (!el) return;
+        const rootEl = document.querySelector('.sections');
+        const el = sectionRef.current;
+        if (!el || !rootEl) return;
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
@@ -28,7 +29,7 @@ export default function About() {
             setShow(false);
           }
         },
-        { threshold: 0.25 }
+        { root:rootEl, threshold: 0.25 }
       );
       observer.observe(el);
       return () => observer.disconnect();
