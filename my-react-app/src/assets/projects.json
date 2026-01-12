@@ -4,27 +4,41 @@
         "name": "ThirdSpace",
         "description": "Full-stack web app for discovering and reviewing productive public spaces, featuing search, filtering, and interactive maps using the Mapbox API. Built with React and a fastAPI backend to support user-submitted data and images.", 
         "img": "/thirdspace-preview.png", 
-        "url": "https://samyuktaathreya.github.io/thirdspace/"
+        "url": "https://samyuktaathreya.github.io/thirdspace/",
+        "video": "/thirdspace-demo.mov",
+        "longDescription": "ThirdSpace is a full-stack web app I built to log and review cafés and public spaces I visit. Users can add locations with photos, descriptions, ratings, and category tags, then browse them in a searchable, filterable list or view them on an interactive map using the Mapbox API.\n\nThe frontend is built with React, and the backend uses FastAPI and Python with an in-memory database to support user-submitted entries. The project is still in progress, with planned features including persistent storage, authentication, a full review system, and machine-learning-based recommendations.",
+        "github": "https://github.com/samyuktaathreya/thirdspace"
+
+
     },
     {
         "id": 2,
         "name": "Yet Another Chat App",
         "description": "Real-time chat app built with TypeScript, Express, MongoDB, and WebSockets, featuring JWT authentication with bcrypt password hashing and REST APIs for user/session management. Deployed using GitHub Actions and Render for continuous delivery.",
         "img": "/yaca-preview.png",
-        "url": "https://yaca-samyuktaa-f25.onrender.com"
+        "url": "https://yaca-samyuktaa-f25.onrender.com",
+        "video": "/yaca-demo-edited.m4v",
+        "longDescription": "Yet Another Chat App (YACA) is a real-time chat web application built as part of my 18-351 course project at Carnegie Mellon University. It supports user authentication, friend lists, and live messaging using WebSockets.\n\nThe stack includes TypeScript on both frontend and backend, Node.js with Express, MongoDB Atlas with Mongoose, JWT authentication with bcrypt password hashing, and Socket.io for real-time updates. The app was deployed on Render with CI/CD using GitHub Actions, and developed using structured software engineering workflows."
+
     }, 
     {
         "id": 3,
         "name": "Accessible Web Interface for Robot Control",
         "description": "React interface integrated with ROS (Robot Operating System) to enable real-time teleoperation and feedback from a robotic arm. Built to support accessbility in a human-robot interaction study, allowing participants to control physical hardware through a browser-based system.",
         "img": "/robotic-interface-preview.png",
-        "url" : ""
+        "url" : "",
+        "video": "/robotic-interface-video.m4v",
+        "longDescription": "This project is a browser-based control interface for teleoperating a physical robotic arm as part of a human-robot interaction study focused on accessibility. The frontend was built in React and communicates with ROS using WebSockets through a ROS bridge server.\n\nA key challenge was enabling fast, reliable communication between web technologies and robotics software, which I solved by integrating a real-time messaging pipeline between the browser and the robot’s control system. A live demo requires access to compatible robotic hardware."
+
     },
     {
         "id": 4,
         "name": "No More Vibecoding!",
         "description": "Built a Chrome extension that blocks copying from popular LLM interfaces to encourage active problem-solving and reduce over-reliance on generated code during learning.",
         "img": "/no-more-vibecoding-preview.png",
-        "url": "https://github.com/samyuktaathreya/ban-vibecoding"
+        "url": "https://github.com/samyuktaathreya/ban-vibecoding",
+        "video": "/chrome-extension.m4v",
+        "longDescription": "No More Vibecoding! is a Chrome extension I built to reduce over-reliance on AI-generated code by blocking copy-and-paste from popular LLM interfaces. The goal is to encourage active problem-solving instead of passive copying while still allowing AI to be used for guidance.\n\nI built this tool to improve my own learning habits, and I continue to use it while coding, including during the development of this portfolio site. It reflects my interest in designing tools that support long-term skill development.",
+        "github": "https://github.com/samyuktaathreya/ban-vibecoding"
     }
 ]

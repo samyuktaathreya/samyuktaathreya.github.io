@@ -5,6 +5,7 @@ import projects from '../assets/projects.json';
 import skills from '../assets/skills.json';
 import { FaLayerGroup, FaCode, FaCaretDown }from "react-icons/fa";
 import {skillIconMap} from "../assets/iconMap.jsx";
+import { useNavigate } from "react-router-dom";
 
 const scrollToSection = (id) => {
   if (typeof window === 'undefined') return;
@@ -16,7 +17,7 @@ const scrollToSection = (id) => {
 
 const onClickLiveDemoBtn = (projectUrl) => {
     if (projectUrl === "") {
-        window.alert("No Live Demo available for this project. See details for more info");
+        window.alert("No Live Demo available for this project. See video for more info");
     }
     else {
         window.open(projectUrl, '_blank', 'noopener,noreferrer')
@@ -24,6 +25,7 @@ const onClickLiveDemoBtn = (projectUrl) => {
 }
 
 function ProjectCard({project}) {
+    const navigate = useNavigate();
 
     return (
         <div className="project-card-container">
@@ -45,7 +47,9 @@ function ProjectCard({project}) {
                     Live Demo
                 </button>
 
-                <button className="project-card-details">
+                <button className="project-card-details"
+                    onClick={() => navigate(`/projects/${project.id}`)}
+                >
                     Details
                 </button>
             </div>

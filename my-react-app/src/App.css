@@ -276,7 +276,9 @@ html, body, #root {
 }
 
 */
-
+.projects-details-page {
+  width:100vw;
+}
 .portfolio-section {
   min-height:100vh;
   width:100%;
@@ -297,6 +299,7 @@ html, body, #root {
   position:relative;
 }
 
+.project-details-page::before,
 .contact-section::before,
 .portfolio-section::before,
 .about-section::before{
@@ -816,6 +819,61 @@ html, body, #root {
   align-self:center;
 }
 
+.project-card-live-demo-btn {
+  border: 2px;
+  border-color:white;
+  border-radius: 4px;
+  padding: 10px 10px;
+}
+
+/* =========================
+   Project Details Buttons
+   ========================= */
+
+.projects-details-page .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 18px;
+  border-radius: 12px;
+
+  font-weight: 700;
+  text-decoration: none;
+
+  color: #eaffff;
+
+  border: 1px solid rgba(94,231,255,0.35);
+
+  box-shadow:
+    0 6px 20px rgba(94,231,255,0.15),
+    inset 0 0 0 1px rgba(255,255,255,0.05);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.projects-details-page .btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(94,231,255,0.6);
+  box-shadow:
+    0 10px 30px rgba(94,231,255,0.25),
+    inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+
+.projects-details-page .btn:active {
+  transform: translateY(0);
+  box-shadow:
+    0 6px 16px rgba(94,231,255,0.2);
+}
+
+
 .contact-title {
   color: #386590; /* dark blue */
   font-size:5rem;
@@ -861,4 +919,165 @@ html, body, #root {
   100% {
     transform: scale(0.9) translateY(3px);
   }
+}
+
+.project-detail-video {
+  width: "100%";
+  max-width: 900px; 
+  border-radius: 12px;
+  margin: 0 auto;
+}
+
+.project-details-container {
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+/* Ensure the details page uses the same font stack as the rest of your site */
+.project-details-page,
+.project-details-page * {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+}
+
+/* Match the glassy card style you use elsewhere */
+.project-details-container {
+  width: 100%;
+  max-width: 1000px;
+
+  padding: 64px 48px;
+  margin: 24px auto;
+
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 10px;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+
+  color: rgba(235,249,255,0.95);
+}
+
+/* Heading styling similar to your other titles */
+.project-details-container h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #eaffff;
+  text-align: center;
+}
+
+/* Description paragraph */
+.project-details-container p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(235,249,255,0.88);
+  text-align:center;
+}
+
+
+.project-detail-video {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.project-details-container iframe {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.back-link {
+  align-self: flex-start;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.14);
+  color: rgba(235,249,255,0.9);
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 200ms ease, background-color 200ms ease;
+}
+
+.back-link:hover {
+  background-color: rgba(86,125,160,0.25);
+  transform: translateY(-2px);
+}
+
+/* Buttons for Live Demo / GitHub */
+.project-details-page .btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+
+  background-color: transparent;
+  border: 1px solid rgba(255,255,255,0.14);
+  color: rgba(235,249,255,0.95);
+
+  transition: transform 200ms ease, background-color 200ms ease, border-color 200ms ease;
+}
+
+.project-details-page .btn:hover {
+  background-color: rgba(86,125,160,0.25);
+  border-color: rgba(86,125,160,0.35);
+  transform: translateY(-2px);
+}
+
+/* Mobile spacing */
+@media (max-width: 640px) {
+  .project-details-container {
+    padding: 32px 18px;
+  }
+
+  .project-details-container h1 {
+    font-size: 1.6rem;
+  }
+}
+
+.project-details-top {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* left, center, right */
+  align-items: center;
+  gap: 12px;
+}
+
+.project-details-title {
+  justify-self: center;
+  margin: 0;          /* important */
+  text-align: center;
+}
+
+.project-details-spacer {
+  width: 1px;         /* just exists so the 3rd column is real */
+}
+
+.project-details-page {
+  min-height:100vh;
+  min-width:100%;
+  display:flex;
+  align-items:flex-start;
+  padding:80px 24px;
+  position:relative;
+}
+
+.project-desc {
+  font-family: jetbrains mono, monospace;
+  font-size:1.1rem;
 }

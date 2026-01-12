@@ -95,8 +95,8 @@ export default function About() {
         <div className="about-paragraph reveal">
           <p>
             Hi! I'm <span>Samyukta Athreya</span>, a junior at <span>Carnegie Mellon University</span> studying
-            Electrical & Computer Engineering with a minor in AI. My particular interests are full stack and AI, two fields that
-            give me the most power to create the apps I wish existed! You can check them out in the <span>Portfolio</span> section.
+            Electrical & Computer Engineering with a minor in AI. My particular interests are full stack and AI. I love
+            building the apps I wish existed!! You can check them out in the <span>Portfolio</span> section.
           </p>
           <div className="aboutButtons">
             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
