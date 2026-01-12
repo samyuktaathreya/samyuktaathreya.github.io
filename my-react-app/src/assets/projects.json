@@ -5,7 +5,7 @@
         "description": "Full-stack web app for discovering and reviewing productive public spaces, featuing search, filtering, and interactive maps using the Mapbox API. Built with React and a fastAPI backend to support user-submitted data and images.", 
         "img": "/thirdspace-preview.png", 
         "url": "https://samyuktaathreya.github.io/thirdspace/",
-        "video": "/thirdspace-demo.mov",
+        "video": "https://youtu.be/9rdLxJD-6_k",
         "longDescription": "ThirdSpace is a full-stack web app I built to log and review cafés and public spaces I visit. Users can add locations with photos, descriptions, ratings, and category tags, then browse them in a searchable, filterable list or view them on an interactive map using the Mapbox API.\n\nThe frontend is built with React, and the backend uses FastAPI and Python with an in-memory database to support user-submitted entries. The project is still in progress, with planned features including persistent storage, authentication, a full review system, and machine-learning-based recommendations.",
         "github": "https://github.com/samyuktaathreya/thirdspace"
 
